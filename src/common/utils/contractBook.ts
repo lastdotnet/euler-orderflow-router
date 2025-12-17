@@ -19,6 +19,7 @@ const contractBook: any = {
       [chains.linea.id]: "0x1480Cfff566f27BbB2AEAd6eeABEc4BA068e5405",
       [9745]: "0x419730b755c6e76B42D2CaD9a2674a8DC748dA38",
       [143]: "0xB6D7194fD09F27890279caB08d565A6424fb525D",
+      [999]: "0x1dAbE49020104803084F67C057579a30b396206e",
     },
   },
   swapVerifier: {
@@ -39,6 +40,7 @@ const contractBook: any = {
       [chains.linea.id]: "0x77C9B0E7Ac0405797F04E5230Ed0A54DB39f98f0",
       [9745]: "0xB695C0aC484F46dD8f279452209b8C53674974bD",
       [143]: "0x65bF068c88e0f006f76b871396B4DB1150dd9EAD",
+      [999]: "0x02632F49E00a996DB4e2cC114D301542e48C0641",
     },
   },
 }

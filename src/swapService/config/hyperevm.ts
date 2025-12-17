@@ -25,7 +25,7 @@ const hyperevmRoutingConfig: ChainRoutingConfig = [
       },
     },
     match: {
-      swapperModes: [SwapperMode.EXACT_IN],
+    //   swapperModes: [SwapperMode.EXACT_IN],
     },
   },
   // FALLBACKS

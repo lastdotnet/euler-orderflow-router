@@ -80,6 +80,8 @@ export async function buildCache() {
         throw new Error(`${response.status} ${response.statusText}`)
       }
       const res = await response.json()
+      console.log("res", res)
+      console.log(chainId)
       if (res.success === "false") {
         throw new Error(JSON.stringify(res))
       }
