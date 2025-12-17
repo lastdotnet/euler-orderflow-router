@@ -1,0 +1,111 @@
+[
+  {
+    "chainId": 999,
+    "address": "0x3A41f426E55ECdE4BC734fA79ccE991b94aFf711",
+    "name": "EUL",
+    "symbol": "EUL",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/1/0xd9Fcd98c322942075A5C3860693e9f4f03AAE07b"
+  },
+  {
+    "chainId": 999,
+    "address": "0x14DCA6543Ef03b932cBD801FBfd70e42a9b6122b",
+    "name": "rEUL",
+    "symbol": "rEUL",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/1/0xd9Fcd98c322942075A5C3860693e9f4f03AAE07b"
+  },
+  {
+    "chainId": 999,
+    "address": "0xfD739d4e423301CE9385c1fb8850539D657C296D",
+    "name": "Kinetiq Staked HYPE",
+    "symbol": "kHYPE",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/999/0xfD739d4e423301CE9385c1fb8850539D657C296D"
+  },
+  {
+    "chainId": 999,
+    "address": "0x5555555555555555555555555555555555555555",
+    "name": "Wrapped HYPE",
+    "symbol": "WHYPE",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/999/0x5555555555555555555555555555555555555555"
+  },
+  {
+    "chainId": 999,
+    "address": "0xb88339CB7199b77E23DB6E890353E22632Ba630f",
+    "name": "USDC",
+    "symbol": "USDC",
+    "decimals": 6,
+    "logoURI": "https://token-images.euler.finance/999/0xb88339CB7199b77E23DB6E890353E22632Ba630f"
+  },
+  {
+    "chainId": 999,
+    "address": "0x111111a1a0667d36bD57c0A9f569b98057111111",
+    "name": "USDH",
+    "symbol": "USDH",
+    "decimals": 6,
+    "logoURI": "https://token-images.euler.finance/999/0x111111a1a0667d36bD57c0A9f569b98057111111"
+  },
+  {
+    "chainId": 999,
+    "address": "0x9FDBdA0A5e284c32744D2f17Ee5c74B284993463",
+    "name": "Unit Bitcoin",
+    "symbol": "UBTC",
+    "decimals": 8,
+    "logoURI": "https://token-images.euler.finance/999/0x9FDBdA0A5e284c32744D2f17Ee5c74B284993463"
+  },
+  {
+    "chainId": 999,
+    "address": "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb",
+    "name": "USD₮0",
+    "symbol": "USD₮0",
+    "decimals": 6,
+    "logoURI": "https://token-images.euler.finance/999/0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb"
+  },
+  {
+    "chainId": 999,
+    "address": "0xea84ca9849D9e76a78B91F221F84e9Ca065FC9f5",
+    "name": "PT Kinetiq Staked HYPE 19MAR2026",
+    "symbol": "PT-kHYPE-19MAR2026",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/999/0xea84ca9849D9e76a78B91F221F84e9Ca065FC9f5",
+    "metadata": {
+      "provider": "PENDLE",
+      "isPendlePT": true,
+      "pendleMarket": "0x31104779B2A07A273D6C662419377773083d0b2E"
+    }
+  },
+  {
+    "chainId": 999,
+    "address": "0x94e8396e0869c9F2200760aF0621aFd240E1CF38",
+    "name": "Staked HYPE Shares",
+    "symbol": "wstHYPE",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/999/0x94e8396e0869c9F2200760aF0621aFd240E1CF38"
+  },
+  {
+    "chainId": 999,
+    "address": "0x81e064d0eB539de7c3170EDF38C1A42CBd752A76",
+    "name": "Hyperbeat LST Vault",
+    "symbol": "lstHYPE",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/999/0x81e064d0eB539de7c3170EDF38C1A42CBd752A76"
+  },
+  {
+    "chainId": 999,
+    "address": "0xd8FC8F0b03eBA61F64D08B0bef69d80916E5DdA9",
+    "name": "hyperbeat x ether.fi HYPE",
+    "symbol": "beHYPE",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/999/0xd8FC8F0b03eBA61F64D08B0bef69d80916E5DdA9"
+  },
+  {
+    "chainId": 999,
+    "address": "0xBe6727B535545C67d5cAa73dEa54865B92CF7907",
+    "name": "Unit Ethereum",
+    "symbol": "UETH",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/999/0xBe6727B535545C67d5cAa73dEa54865B92CF7907"
+  }
+]

@@ -129,6 +129,33 @@ export const plasma = defineChain({
   },
 } as const)
 
+export const hyperevm = defineChain({
+  id: 999,
+  name: "HyperEVM",
+  nativeCurrency: {
+    decimals: 18,
+    name: "HYPE",
+    symbol: "HYPE",
+  },
+  blockExplorers: {
+    default: {
+      name: "Hyperliquid Explorer",
+      url: "https://explorer.hyperliquid.xyz/",
+    },
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://rpc.hyperliquid.xyz/evm"],
+    },
+  },
+  contracts: {
+    multicall3: {
+      address: "0xcA11bde05977b3631167028862bE2a173976CA11",
+      blockCreated: 0,
+    },
+  },
+} as const)
+
 export const RPC_URLS: Record<number, string> = {
   [chains.mainnet.id]: process.env.RPC_URL_1 || "",
   [chains.arbitrum.id]: process.env.RPC_URL_42161 || "",
@@ -144,6 +171,7 @@ export const RPC_URLS: Record<number, string> = {
   [tac.id]: process.env.RPC_URL_239 || "",
   [plasma.id]: process.env.RPC_URL_9745 || "",
   [143]: process.env.RPC_URL_143 || "", // monad
+  [hyperevm.id]: process.env.RPC_URL_999 || "",
 } as const
 
 export const createHttp = (chainId: number) =>
@@ -186,6 +214,10 @@ export const createClients = (): Record<number, Client<Transport, Chain>> => ({
     transport: http(RPC_URLS[plasma.id]),
   }),
   [chains.linea.id]: createChainConfig(chains.linea),
+  [hyperevm.id]: createClient({
+    chain: hyperevm,
+    transport: http(RPC_URLS[hyperevm.id]),
+  }),
 })
 
 export const viemClients = createClients()
