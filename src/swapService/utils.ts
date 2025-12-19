@@ -277,15 +277,20 @@ export function addInOutDeposits(
   swapParams: SwapParams,
   response: SwapApiResponse,
 ): SwapApiResponse {
-  const multicallItems = [
-    ...response.swap.multicallItems,
-    encodeDepositMulticallItem(
-      swapParams.tokenIn.address,
-      swapParams.vaultIn,
-      5n, // avoid zero shares error
-      swapParams.accountIn,
-    ),
-  ]
+  const multicallItems = [...response.swap.multicallItems]
+
+  // Only add input token deposit if there's a source vault (not zero address)
+  // For wallet swaps where vaultIn = 0x0, there's no vault to deposit leftover tokens to
+  if (!isAddressEqual(swapParams.vaultIn, zeroAddress)) {
+    multicallItems.push(
+      encodeDepositMulticallItem(
+        swapParams.tokenIn.address,
+        swapParams.vaultIn,
+        5n, // avoid zero shares error
+        swapParams.accountIn,
+      ),
+    )
+  }
 
   if (!swapParams.skipSweepDepositOut) {
     multicallItems.push(
@@ -562,14 +567,18 @@ export function encodeRepayAndSweep(swapParams: SwapParams) {
     )
   }
 
-  multicallItems.push(
-    encodeDepositMulticallItem(
-      swapParams.tokenIn.address,
-      swapParams.vaultIn,
-      5n,
-      swapParams.accountIn,
-    ),
-  )
+  // Only add input token deposit if there's a source vault (not zero address)
+  // For wallet swaps where vaultIn = 0x0, there's no vault to deposit leftover tokens to
+  if (!isAddressEqual(swapParams.vaultIn, zeroAddress)) {
+    multicallItems.push(
+      encodeDepositMulticallItem(
+        swapParams.tokenIn.address,
+        swapParams.vaultIn,
+        5n,
+        swapParams.accountIn,
+      ),
+    )
+  }
 
   return multicallItems
 }

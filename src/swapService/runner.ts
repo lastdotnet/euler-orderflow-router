@@ -45,8 +45,6 @@ export async function runPipeline(
     if (result.quotes) break
   }
 
-  console.log(allResults)
-
   const finalResult = allResults.at(-1)
   if (!finalResult)
     throw new ApiError(
@@ -61,14 +59,14 @@ export async function runPipeline(
     )
   }
 
-  console.log({
-    name: "Best quote",
-    amountIn: finalResult.quotes[0].amountIn,
-    amountInMax: finalResult.quotes[0].amountInMax,
-    amountOut: finalResult.quotes[0].amountOut,
-    amountOutMin: finalResult.quotes[0].amountOutMin,
-    route: finalResult.quotes[0].route,
-  })
+  // console.log({
+  //   name: "Best quote",
+  //   amountIn: finalResult.quotes[0].amountIn,
+  //   amountInMax: finalResult.quotes[0].amountInMax,
+  //   amountOut: finalResult.quotes[0].amountOut,
+  //   amountOutMin: finalResult.quotes[0].amountOutMin,
+  //   route: finalResult.quotes[0].route,
+  // })
   // console.log(
   //   finalResult.quotes
   //     .map((q) => q.route.map((r) => r.providerName).join(" "))

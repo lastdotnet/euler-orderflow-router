@@ -37,9 +37,39 @@ const loadTokenlistsFromFiles = () => {
     const match = file.match(/(\d+)/g)
     if (!match) throw new Error("Invalid tokenlist file")
     const chainId = Number(match[0])
-    cache[chainId] = JSON.parse(
+
+    // Load the main tokenlist file
+    const tokenlist = JSON.parse(
       fs.readFileSync(`${dir}/${file}`).toString(),
     ) as TokenListItem[]
+
+    // Check if there's an always tokenlist for this chainId
+    const alwaysFile = `${dir}/tokenList-always-${chainId}.json`
+    let alwaysTokenlist: TokenListItem[] = []
+    try {
+      alwaysTokenlist = JSON.parse(
+        fs.readFileSync(alwaysFile).toString(),
+      ) as TokenListItem[]
+    } catch {
+      // No always tokenlist for this chainId, continue
+    }
+
+    // Merge the tokenlists, with always tokenlist taking precedence
+    const mergedMap = new Map<string, TokenListItem>()
+
+    // Add main tokenlist items
+    for (const token of tokenlist) {
+      const key = `${token.chainId}-${token.address.toLowerCase()}`
+      mergedMap.set(key, token)
+    }
+
+    // Add/override with always tokenlist items
+    for (const token of alwaysTokenlist) {
+      const key = `${token.chainId}-${token.address.toLowerCase()}`
+      mergedMap.set(key, token)
+    }
+
+    cache[chainId] = Array.from(mergedMap.values())
   }
 }
 
@@ -67,6 +97,7 @@ export async function buildCache() {
     loadTokenlistsFromFiles()
     return cache
   }
+  loadTokenlistsFromFiles()
 
   await Promise.all(
     Object.keys(RPC_URLS).map(async (chainId) => {
@@ -80,15 +111,47 @@ export async function buildCache() {
         throw new Error(`${response.status} ${response.statusText}`)
       }
       const res = await response.json()
-      console.log("res", res)
-      console.log(chainId)
       if (res.success === "false") {
         throw new Error(JSON.stringify(res))
       }
       for (const t of res) {
         t.logoURI = t.logoURI.replace(/([?&])v=[^&]*/g, "")
       }
-      cache[Number(chainId)] = res as TokenListItem[]
+
+      // Merge with always tokenlist
+      const chainIdNum = Number(chainId)
+      let dir = `${__dirname}/../tokenLists`
+      try {
+        fs.readdirSync(dir)
+      } catch {
+        dir = `${__dirname}/../../../tokenLists`
+      }
+      const alwaysFile = `${dir}/tokenList-always-${chainIdNum}.json`
+      let alwaysTokenlist: TokenListItem[] = []
+      try {
+        alwaysTokenlist = JSON.parse(
+          fs.readFileSync(alwaysFile).toString(),
+        ) as TokenListItem[]
+      } catch {
+        // No always tokenlist for this chainId
+      }
+
+      // Merge tokenlists, with always tokenlist taking precedence
+      const mergedMap = new Map<string, TokenListItem>()
+
+      // Add remote tokenlist items
+      for (const token of res as TokenListItem[]) {
+        const key = `${token.chainId}-${token.address.toLowerCase()}`
+        mergedMap.set(key, token)
+      }
+
+      // Add/override with always tokenlist items
+      for (const token of alwaysTokenlist) {
+        const key = `${token.chainId}-${token.address.toLowerCase()}`
+        mergedMap.set(key, token)
+      }
+
+      cache[chainIdNum] = Array.from(mergedMap.values())
     }),
   ).catch((err) => {
     console.log(`Error fetching tokenlists ${err}`)

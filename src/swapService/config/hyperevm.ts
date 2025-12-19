@@ -1,9 +1,5 @@
 import { type ChainRoutingConfig, SwapperMode } from "../interface"
-import {
-  StrategyBalmySDK,
-  StrategyRepayWrapper,
-} from "../strategies"
-
+import { StrategyBalmySDK, StrategyRepayWrapper } from "../strategies"
 
 const hyperevmRoutingConfig: ChainRoutingConfig = [
   // WRAPPERS
@@ -19,24 +15,20 @@ const hyperevmRoutingConfig: ChainRoutingConfig = [
     strategy: StrategyBalmySDK.name(),
     config: {
       sourcesFilter: {
-        includeSources: [
-          "enso",
-        ],
+        includeSources: ["gluex"],
       },
     },
     match: {
-    //   swapperModes: [SwapperMode.EXACT_IN],
+      swapperModes: [SwapperMode.EXACT_IN],
     },
   },
   // FALLBACKS
-  // Binary search overswap for target  debt
+  // Binary search overswap for target debt
   {
     strategy: StrategyBalmySDK.name(),
     config: {
       sourcesFilter: {
-        includeSources: [
-          "enso",
-        ],
+        includeSources: ["gluex"],
       },
     },
     match: {
@@ -44,6 +36,5 @@ const hyperevmRoutingConfig: ChainRoutingConfig = [
     },
   },
 ]
-
 
 export default hyperevmRoutingConfig

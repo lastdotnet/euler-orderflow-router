@@ -154,6 +154,15 @@ export class StrategyBalmySDK {
             enso: {
               apiKey: String(process.env.ENSO_API_KEY),
             },
+            gluex: {
+              apiKey: String(
+                process.env.GLUEX_API_KEY ||
+                  process.env.NEXT_PUBLIC_GLUEX_API_KEY,
+              ),
+              integratorId: String(
+                process.env.GLUEX_UUID || process.env.NEXT_PUBLIC_GLUEX_UUID,
+              ),
+            },
             ...Object.fromEntries(
               allPendleAggregators.map((aggregator) => [
                 `pendle-${aggregator}`,
@@ -204,6 +213,17 @@ export class StrategyBalmySDK {
       match: matchParams(swapParams, this.match),
     }
 
+    console.log("[BalmySDK] findSwap called:", {
+      chainId: swapParams.chainId,
+      tokenIn: swapParams.tokenIn.address,
+      tokenOut: swapParams.tokenOut.address,
+      amount: swapParams.amount.toString(),
+      swapperMode: swapParams.swapperMode,
+      sourcesFilter: this.config.sourcesFilter,
+      supports: result.supports,
+      match: result.match,
+    })
+
     if (!result.supports || !result.match) return result
 
     try {
@@ -222,14 +242,25 @@ export class StrategyBalmySDK {
         }
       }
     } catch (error) {
+      console.error("[BalmySDK] Error in findSwap:", error)
       result.error = error
     }
+
+    console.log("[BalmySDK] findSwap result:", {
+      quotesCount: result.quotes?.length ?? 0,
+      error: result.error ? String(result.error) : undefined,
+    })
 
     return result
   }
 
   async exactIn(swapParams: SwapParams) {
+    console.log("[BalmySDK] exactIn: fetching quotes...")
     const quotes = await this.#getAllQuotesWithTxs(swapParams)
+    console.log(
+      `[BalmySDK] exactIn: received ${quotes.length} quotes from sources:`,
+      quotes.map((q) => q.source.id),
+    )
     return quotes.map((q) => {
       const swapQuote = this.#getSwapQuoteFromSDKQuoteWithTx(swapParams, q)
       return buildApiResponseExactInputFromQuote(swapParams, swapQuote)
@@ -475,24 +506,59 @@ export class StrategyBalmySDK {
     swapParams: SwapParams,
     sourcesFilter?: SourcesFilter,
   ) {
+    const request = this.#getSDKQuoteFromSwapParams(swapParams, sourcesFilter)
+    console.log("[BalmySDK] #getAllQuotesWithTxs request:", {
+      chainId: request.chainId,
+      sellToken: request.sellToken,
+      buyToken: request.buyToken,
+      order: request.order,
+      filters: request.filters,
+    })
+
+    const supportedSources = this.sdk.quoteService.supportedSources()
+    console.log(
+      `[BalmySDK] Available sources for chain ${swapParams.chainId}:`,
+      Object.entries(supportedSources)
+        .filter(([_, source]) =>
+          (source as any).supports.chains.includes(swapParams.chainId),
+        )
+        .map(([id]) => id),
+    )
+
     const quotes = await this.sdk.quoteService.getAllQuotesWithTxs({
-      request: this.#getSDKQuoteFromSwapParams(swapParams, sourcesFilter),
+      request,
       config: {
         timeout: (this.config.timeout as TimeString) || DEFAULT_TIMEOUT,
       },
     })
 
+    console.log(
+      `[BalmySDK] #getAllQuotesWithTxs returned ${quotes.length} quotes`,
+    )
     return quotes
   }
 
   async #getAllQuotes(swapParams: SwapParams, sourcesFilter?: SourcesFilter) {
+    const request = this.#getSDKQuoteFromSwapParams(swapParams, sourcesFilter)
+    console.log("[BalmySDK] #getAllQuotes request:", {
+      chainId: request.chainId,
+      sellToken: request.sellToken,
+      buyToken: request.buyToken,
+      order: request.order,
+      filters: request.filters,
+    })
+
     const quotes = await this.sdk.quoteService.getAllQuotes({
-      request: this.#getSDKQuoteFromSwapParams(swapParams, sourcesFilter),
+      request,
       config: {
         timeout: (this.config.timeout as TimeString) || DEFAULT_TIMEOUT,
       },
     })
 
+    console.log(
+      `[BalmySDK] #getAllQuotes returned ${quotes.length} quotes:`,
+      quotes.map((q) => ({ source: q.source.id, buyAmount: q.buyAmount })),
+    )
     return quotes
   }
 

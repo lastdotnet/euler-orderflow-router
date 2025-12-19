@@ -46,6 +46,7 @@ const SUPPORTED_CHAINS: Record<ChainId, string> = {
   [59144]: "linea",
   [9745]: "plasma",
   [143]: "monad",
+  [999]: "hyperevm",
 }
 
 const KYBERSWAP_METADATA: QuoteSourceMetadata<KyberswapSupport> = {

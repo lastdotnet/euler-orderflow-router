@@ -7,12 +7,12 @@ import berachainRoutingConfig from "./berachain"
 import bobRoutingConfig from "./bob"
 import bscRoutingConfig from "./bsc"
 import defaultRoutingConfig from "./default"
+import hyperevmRoutingConfig from "./hyperevm"
 import mainnetRoutingConfig from "./mainnet"
 import plasmaRoutingConfig from "./plasma"
 import sonicRoutingConfig from "./sonic"
 import swellRoutingConfig from "./swell"
 import unichainRoutingConfig from "./unichain"
-import hyperevmRoutingConfig from "./hyperevm"
 
 export const routingConfig: RoutingConfig = {
   [mainnet.id]: mainnetRoutingConfig,
