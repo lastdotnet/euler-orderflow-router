@@ -47,7 +47,8 @@ type EnsoConfig = {
 }
 type EnsoData = { tx: SourceQuoteTransaction }
 export class CustomEnsoQuoteSource
-  implements IQuoteSource<EnsoSupport, EnsoConfig, EnsoData> {
+  implements IQuoteSource<EnsoSupport, EnsoConfig, EnsoData>
+{
   getMetadata() {
     return ENSO_METADATA
   }

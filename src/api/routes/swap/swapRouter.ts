@@ -9,6 +9,7 @@ import {
   validateRequest,
 } from "@/common/utils/httpHandlers"
 import { log, logProd, logRouteTime } from "@/common/utils/logs"
+import getTokenList from "@/common/utils/tokenList"
 import { findSwaps } from "@/swapService/runner"
 import type { SwapParams } from "@/swapService/types"
 import {
@@ -62,12 +63,12 @@ swapRouter.get(
 
       logRouteTime(swapParams, elapsedSeconds)
 
-      return handleServiceResponse(
+      handleServiceResponse(
         ServiceResponse.success<SwapResponseSingle>(swaps[0]),
         res,
       )
     } catch (error) {
-      return handleServiceResponse(createFailureResponse(req, error), res)
+      handleServiceResponse(createFailureResponse(req, error), res)
     } finally {
       log("===== SWAP END =====")
     }
@@ -87,12 +88,9 @@ swapRouter.get(
 
       logRouteTime(swapParams, elapsedSeconds)
 
-      return handleServiceResponse(
-        ServiceResponse.success<SwapResponse>(swaps),
-        res,
-      )
+      handleServiceResponse(ServiceResponse.success<SwapResponse>(swaps), res)
     } catch (error) {
-      return handleServiceResponse(createFailureResponse(req, error), res)
+      handleServiceResponse(createFailureResponse(req, error), res)
     } finally {
       log("===== SWAPS END =====")
     }
@@ -129,11 +127,30 @@ function parseRequest(request: Request): SwapParams {
     //  }
 
     const chainId = validatedParams.chainId
+    const allTokens = getTokenList(chainId)
+    console.log(`[SwapRouter] Token cache for chain ${chainId}:`, {
+      totalTokens: allTokens.length,
+      tokenAddresses: allTokens.map((t) => t.address.toLowerCase()),
+    })
+
     const tokenIn = findToken(chainId, validatedParams.tokenIn)
+    console.log(`[SwapRouter] Looking up tokenIn: ${validatedParams.tokenIn}`, {
+      found: !!tokenIn,
+      token: tokenIn,
+      normalized: validatedParams.tokenIn.toLowerCase(),
+    })
     if (!tokenIn)
       throw new ApiError(StatusCodes.NOT_FOUND, "Token in not supported")
 
     const tokenOut = findToken(chainId, validatedParams.tokenOut)
+    console.log(
+      `[SwapRouter] Looking up tokenOut: ${validatedParams.tokenOut}`,
+      {
+        found: !!tokenOut,
+        token: tokenOut,
+        normalized: validatedParams.tokenOut.toLowerCase(),
+      },
+    )
 
     if (!tokenOut)
       throw new ApiError(StatusCodes.NOT_FOUND, "Token out not supported")
