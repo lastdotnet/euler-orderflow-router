@@ -15,8 +15,9 @@ const hyperevmRoutingConfig: ChainRoutingConfig = [
     strategy: StrategyBalmySDK.name(),
     config: {
       sourcesFilter: {
-        includeSources: ["gluex"],
+        includeSources: ["gluex", "kyberswap", "li-fi", "enso"],
       },
+      timeout: "45000",
     },
     match: {
       swapperModes: [SwapperMode.EXACT_IN],
@@ -28,8 +29,9 @@ const hyperevmRoutingConfig: ChainRoutingConfig = [
     strategy: StrategyBalmySDK.name(),
     config: {
       sourcesFilter: {
-        includeSources: ["gluex"],
+        includeSources: ["gluex", "kyberswap", "li-fi", "enso"],
       },
+      timeout: "45000",
     },
     match: {
       swapperModes: [SwapperMode.TARGET_DEBT],

@@ -103,24 +103,80 @@ export class CustomGlueXQuoteSource
       "x-api-key": config.apiKey,
     }
 
-    // Get quote with calldata
+    // Get quote with calldata - retry up to 3 times due to Gluex API intermittent failures
     const quoteUrl = "https://router.gluex.xyz/v1/quote"
-    const response = await fetchService.fetch(quoteUrl, {
-      timeout,
-      headers,
-      method: "POST",
-      body: JSON.stringify(requestBody),
-    })
+    let response: Response | null = null
+    let lastError: string | null = null
+    const maxRetries = 3
+    const retryDelay = 500 // ms
 
-    if (!response.ok) {
-      const errorText = await response.text()
-      console.error("[GlueX] Quote failed:", {
-        status: response.status,
-        statusText: response.statusText,
-        error: errorText,
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        response = await fetchService.fetch(quoteUrl, {
+          timeout,
+          headers,
+          method: "POST",
+          body: JSON.stringify(requestBody),
+        })
+
+        if (response.ok) {
+          const result = await response.json()
+          // Check if it's a valid successful response with outputAmount
+          if (result.result?.outputAmount) {
+            console.log(
+              `[GlueX] Quote success on attempt ${attempt}:`,
+              JSON.stringify(result, null, 2),
+            )
+            break // Success!
+          }
+          // Got 200 but invalid structure - treat as error
+          console.warn(
+            `[GlueX] Attempt ${attempt} returned 200 but invalid structure:`,
+            result,
+          )
+          lastError = JSON.stringify(result)
+          response = null
+        } else {
+          const errorText = await response.text()
+          console.warn(`[GlueX] Attempt ${attempt}/${maxRetries} failed:`, {
+            status: response.status,
+            statusText: response.statusText,
+            error: errorText,
+          })
+          lastError = errorText
+          response = null
+        }
+
+        // Wait before retrying (except on last attempt)
+        if (attempt < maxRetries) {
+          await new Promise((resolve) => setTimeout(resolve, retryDelay))
+        }
+      } catch (error) {
+        console.warn(
+          `[GlueX] Attempt ${attempt}/${maxRetries} threw error:`,
+          error,
+        )
+        lastError = String(error)
+        response = null
+        if (attempt < maxRetries) {
+          await new Promise((resolve) => setTimeout(resolve, retryDelay))
+        }
+      }
+    }
+
+    if (!response) {
+      console.error("[GlueX] All retry attempts failed:", {
+        maxRetries,
+        lastError,
         requestBody,
       })
-      failed(GLUEX_METADATA, chainId, sellToken, buyToken, errorText)
+      failed(
+        GLUEX_METADATA,
+        chainId,
+        sellToken,
+        buyToken,
+        lastError || "All retries failed",
+      )
     }
 
     const result = await response.json()
