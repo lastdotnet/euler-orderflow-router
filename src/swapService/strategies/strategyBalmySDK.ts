@@ -525,11 +525,16 @@ export class StrategyBalmySDK {
         .map(([id]) => id),
     )
 
+    console.log(
+      "[BalmySDK] Requesting quotes from sources:",
+      request.filters?.includeSources || "all",
+    )
+
     const quotes = await this.sdk.quoteService.getAllQuotesWithTxs({
       request,
       config: {
         timeout: (this.config.timeout as TimeString) || DEFAULT_TIMEOUT,
-        ignoredFailed: false, // Include failed quotes to see errors
+        ignoredFailed: false,
       },
     })
 
@@ -537,14 +542,24 @@ export class StrategyBalmySDK {
       `[BalmySDK] #getAllQuotesWithTxs returned ${quotes.length} quotes`,
     )
 
-    // Log any failed quotes to understand what's happening
-    const failedQuotes = quotes.filter((q: any) => q.failed)
-    if (failedQuotes.length > 0) {
-      console.log("[BalmySDK] Failed quotes:", JSON.stringify(failedQuotes))
+    for (const q of quotes as any[]) {
+      if (q.failed) {
+        console.error(
+          `[BalmySDK] ❌ ${q.source?.id || "unknown"} FAILED:`,
+          q.error?.message || q.error || "Unknown error",
+        )
+      } else {
+        console.log(
+          `[BalmySDK] ✅ ${q.source?.id || "unknown"} SUCCESS: buyAmount=${q.buyAmount?.toString()}`,
+        )
+      }
     }
 
     // Filter out failed quotes before returning
     const successfulQuotes = quotes.filter((q: any) => !q.failed)
+    console.log(
+      `[BalmySDK] Returning ${successfulQuotes.length} successful quotes from: [${successfulQuotes.map((q: any) => q.source?.id).join(", ")}]`,
+    )
     return successfulQuotes
   }
 
