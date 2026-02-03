@@ -105,14 +105,14 @@ export class CustomGlueXQuoteSource
 
     // Get quote with calldata - retry up to 3 times due to Gluex API intermittent failures
     const quoteUrl = "https://router.gluex.xyz/v1/quote"
-    let response: Response | null = null
+    let result: any = null
     let lastError: string | null = null
     const maxRetries = 3
     const retryDelay = 500 // ms
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
-        response = await fetchService.fetch(quoteUrl, {
+        const response = await fetchService.fetch(quoteUrl, {
           timeout,
           headers,
           method: "POST",
@@ -120,7 +120,7 @@ export class CustomGlueXQuoteSource
         })
 
         if (response.ok) {
-          const result = await response.json()
+          result = await response.json()
           // Check if it's a valid successful response with outputAmount
           if (result.result?.outputAmount) {
             console.log(
@@ -135,7 +135,7 @@ export class CustomGlueXQuoteSource
             result,
           )
           lastError = JSON.stringify(result)
-          response = null
+          result = null
         } else {
           const errorText = await response.text()
           console.warn(`[GlueX] Attempt ${attempt}/${maxRetries} failed:`, {
@@ -144,7 +144,7 @@ export class CustomGlueXQuoteSource
             error: errorText,
           })
           lastError = errorText
-          response = null
+          result = null
         }
 
         // Wait before retrying (except on last attempt)
@@ -157,14 +157,14 @@ export class CustomGlueXQuoteSource
           error,
         )
         lastError = String(error)
-        response = null
+        result = null
         if (attempt < maxRetries) {
           await new Promise((resolve) => setTimeout(resolve, retryDelay))
         }
       }
     }
 
-    if (!response) {
+    if (!result) {
       console.error("[GlueX] All retry attempts failed:", {
         maxRetries,
         lastError,
@@ -179,7 +179,6 @@ export class CustomGlueXQuoteSource
       )
     }
 
-    const result = await response.json()
     console.log("[GlueX] Quote response:", JSON.stringify(result, null, 2))
 
     if (!result.result) {
