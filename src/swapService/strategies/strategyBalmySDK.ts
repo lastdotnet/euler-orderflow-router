@@ -582,7 +582,7 @@ export class StrategyBalmySDK {
           : { type: "buy", buyAmount: swapParams.amount }),
       },
       slippagePercentage: swapParams.slippage,
-      takerAddress: swapParams.from,
+      takerAddress: swapParams.origin,
       recipient: swapParams.receiver,
       filters: sourcesFilter || this.config.sourcesFilter,
       includeNonTransferSourcesWhenRecipientIsSet: true,
