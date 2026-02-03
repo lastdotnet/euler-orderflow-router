@@ -529,13 +529,23 @@ export class StrategyBalmySDK {
       request,
       config: {
         timeout: (this.config.timeout as TimeString) || DEFAULT_TIMEOUT,
+        ignoredFailed: false, // Include failed quotes to see errors
       },
     })
 
     console.log(
       `[BalmySDK] #getAllQuotesWithTxs returned ${quotes.length} quotes`,
     )
-    return quotes
+
+    // Log any failed quotes to understand what's happening
+    const failedQuotes = quotes.filter((q: any) => q.failed)
+    if (failedQuotes.length > 0) {
+      console.log("[BalmySDK] Failed quotes:", JSON.stringify(failedQuotes))
+    }
+
+    // Filter out failed quotes before returning
+    const successfulQuotes = quotes.filter((q: any) => !q.failed)
+    return successfulQuotes
   }
 
   async #getAllQuotes(swapParams: SwapParams, sourcesFilter?: SourcesFilter) {

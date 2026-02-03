@@ -173,7 +173,20 @@ export class CustomGlueXQuoteSource
       },
     }
 
-    return addQuoteSlippage(quote, order.type, slippagePercentage)
+    const quoteWithSlippage = addQuoteSlippage(
+      quote,
+      order.type,
+      slippagePercentage,
+    )
+    console.log("[GlueX] Returning quote with slippage:", {
+      buyAmount: quoteWithSlippage.buyAmount.toString(),
+      minBuyAmount: quoteWithSlippage.minBuyAmount.toString(),
+      sellAmount: quoteWithSlippage.sellAmount.toString(),
+      maxSellAmount: quoteWithSlippage.maxSellAmount.toString(),
+      allowanceTarget: quoteWithSlippage.allowanceTarget,
+      hasTxData: !!quoteWithSlippage.customData.tx,
+    })
+    return quoteWithSlippage
   }
 
   async buildTx({
