@@ -10,14 +10,14 @@ const hyperevmRoutingConfig: ChainRoutingConfig = [
       swapperModes: [SwapperMode.EXACT_IN],
     },
   },
-  // DEFAULTS
+  // DEFAULTS - Prioritize reliable DEXes first (Enso, Kyberswap)
   {
     strategy: StrategyBalmySDK.name(),
     config: {
       sourcesFilter: {
-        includeSources: ["gluex", "kyberswap", "li-fi", "enso"],
+        includeSources: ["enso", "kyberswap", "gluex"],
       },
-      timeout: "45000",
+      timeout: "60000",
     },
     match: {
       swapperModes: [SwapperMode.EXACT_IN],
@@ -29,9 +29,9 @@ const hyperevmRoutingConfig: ChainRoutingConfig = [
     strategy: StrategyBalmySDK.name(),
     config: {
       sourcesFilter: {
-        includeSources: ["gluex", "kyberswap", "li-fi", "enso"],
+        includeSources: ["enso", "kyberswap", "gluex"],
       },
-      timeout: "45000",
+      timeout: "60000",
     },
     match: {
       swapperModes: [SwapperMode.TARGET_DEBT],
