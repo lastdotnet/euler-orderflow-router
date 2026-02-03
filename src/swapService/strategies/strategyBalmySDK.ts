@@ -515,21 +515,6 @@ export class StrategyBalmySDK {
       filters: request.filters,
     })
 
-    const supportedSources = this.sdk.quoteService.supportedSources()
-    console.log(
-      `[BalmySDK] Available sources for chain ${swapParams.chainId}:`,
-      Object.entries(supportedSources)
-        .filter(([_, source]) =>
-          (source as any).supports.chains.includes(swapParams.chainId),
-        )
-        .map(([id]) => id),
-    )
-
-    console.log(
-      "[BalmySDK] Requesting quotes from sources:",
-      request.filters?.includeSources || "all",
-    )
-
     const quotes = await this.sdk.quoteService.getAllQuotesWithTxs({
       request,
       config: {
@@ -538,28 +523,22 @@ export class StrategyBalmySDK {
       },
     })
 
-    console.log(
-      `[BalmySDK] #getAllQuotesWithTxs returned ${quotes.length} quotes`,
-    )
+    const successfulQuotes = quotes.filter((q: any) => !q.failed)
+    const failedQuotes = quotes.filter((q: any) => q.failed)
 
-    for (const q of quotes as any[]) {
-      if (q.failed) {
-        console.error(
-          `[BalmySDK] ❌ ${q.source?.id || "unknown"} FAILED:`,
-          q.error?.message || q.error || "Unknown error",
-        )
-      } else {
-        console.log(
-          `[BalmySDK] ✅ ${q.source?.id || "unknown"} SUCCESS: buyAmount=${q.buyAmount?.toString()}`,
-        )
-      }
+    if (failedQuotes.length > 0) {
+      console.error(
+        `[BalmySDK] ${failedQuotes.length} source(s) failed:`,
+        failedQuotes
+          .map((q: any) => `${q.source?.id}: ${q.error?.message || "Unknown"}`)
+          .join(", "),
+      )
     }
 
-    // Filter out failed quotes before returning
-    const successfulQuotes = quotes.filter((q: any) => !q.failed)
     console.log(
-      `[BalmySDK] Returning ${successfulQuotes.length} successful quotes from: [${successfulQuotes.map((q: any) => q.source?.id).join(", ")}]`,
+      `[BalmySDK] Returning ${successfulQuotes.length} quotes from: ${successfulQuotes.map((q: any) => q.source?.id).join(", ")}`,
     )
+
     return successfulQuotes
   }
 
