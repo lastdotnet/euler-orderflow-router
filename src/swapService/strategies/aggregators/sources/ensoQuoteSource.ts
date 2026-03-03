@@ -18,21 +18,7 @@ import qs from "qs"
 const ENSO_METADATA: QuoteSourceMetadata<EnsoSupport> = {
   name: "Enso",
   supports: {
-    chains: [
-      Chains.ETHEREUM.chainId,
-      Chains.OPTIMISM.chainId,
-      Chains.BNB_CHAIN.chainId,
-      Chains.GNOSIS.chainId,
-      Chains.POLYGON.chainId,
-      Chains.BASE.chainId,
-      Chains.ARBITRUM.chainId,
-      Chains.AVALANCHE.chainId,
-      Chains.SONIC.chainId,
-      80094, // berachain
-      Chains.UNICHAIN.chainId,
-      Chains.PLASMA.chainId,
-      Chains.MONAD.chainId,
-    ],
+    chains: [],
     swapAndTransfer: false,
     buyOrders: false,
   },

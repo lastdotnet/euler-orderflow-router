@@ -20,33 +20,8 @@ import {
   calculateAllowanceTarget,
   failed,
 } from "@balmy/sdk/dist/services/quotes/quote-sources/utils"
-import * as chains from "viem/chains"
 
 const SUPPORTED_CHAINS: Record<ChainId, string> = {
-  [Chains.ARBITRUM.chainId]: "arbitrum",
-  [Chains.AURORA.chainId]: "aurora",
-  [Chains.AVALANCHE.chainId]: "avalanche",
-  [Chains.BNB_CHAIN.chainId]: "bsc",
-  [Chains.BIT_TORRENT.chainId]: "bttc",
-  [Chains.CRONOS.chainId]: "cronos",
-  [Chains.ETHEREUM.chainId]: "ethereum",
-  [Chains.FANTOM.chainId]: "fantom",
-  [Chains.OASIS_EMERALD.chainId]: "oasis",
-  [Chains.POLYGON.chainId]: "polygon",
-  [Chains.VELAS.chainId]: "velas",
-  [Chains.OPTIMISM.chainId]: "optimism",
-  [Chains.LINEA.chainId]: "linea",
-  [Chains.BASE.chainId]: "base",
-  [Chains.POLYGON_ZKEVM.chainId]: "polygon-zkevm",
-  [Chains.SCROLL.chainId]: "scroll",
-  [Chains.BLAST.chainId]: "blast",
-  [Chains.MANTLE.chainId]: "mantle",
-  [Chains.SONIC.chainId]: "sonic",
-  [Chains.ZK_SYNC_ERA.chainId]: "zksync",
-  [Chains.UNICHAIN.chainId]: "unichain",
-  [Chains.LINEA.chainId]: "linea",
-  [Chains.PLASMA.chainId]: "plasma",
-  [Chains.MONAD.chainId]: "monad",
   [Chains.HYPER_EVM.chainId]: "hyperevm",
 }
 

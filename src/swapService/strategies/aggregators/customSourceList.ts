@@ -8,24 +8,12 @@ import type {
   SourceListQuoteResponse,
 } from "@balmy/sdk"
 import { LocalSourceList } from "@balmy/sdk/dist/services/quotes/source-lists/local-source-list"
-import { CustomZRXQuoteSource } from "./sources/0xMatchaQuoteSource"
 
 import { CustomEnsoQuoteSource } from "./sources/ensoQuoteSource"
 import { CustomGlueXQuoteSource } from "./sources/gluexQuoteSource"
 import { CustomKyberswapQuoteSource } from "./sources/kyberswapQuoteSource"
 import { CustomLiFiQuoteSource } from "./sources/lifiQuoteSource"
-import { CustomMagpieQuoteSource } from "./sources/magpieQuoteSource"
-import { CustomNeptuneQuoteSource } from "./sources/neptuneQuoteSource"
-import { CustomOdosQuoteSource } from "./sources/odosQuoteSource"
-import { CustomOkuQuoteSource } from "./sources/okuQuoteSource"
-import { CustomOKXDexQuoteSource } from "./sources/okxDexQuoteSource"
-import { CustomOneInchQuoteSource } from "./sources/oneInchQuoteSource"
-import { CustomOogaboogaQuoteSource } from "./sources/oogaboogaQuoteSource"
-import { CustomOpenOceanQuoteSource } from "./sources/openOceanQuoteSource"
-import { CustomParaswapQuoteSource } from "./sources/paraswapQuoteSource"
 import { CustomPendleQuoteSource } from "./sources/pendleQuoteSource"
-import { CustomSpectraQuoteSource } from "./sources/spectraQuoteSource"
-import { CustomUniswapQuoteSource } from "./sources/uniswapQuoteSource"
 
 import pendleAggregators from "./sources/pendle/pendleAggregators.json"
 
@@ -35,28 +23,12 @@ type ConstructorParameters = {
 }
 
 const customSources = {
-  "1inch": new CustomOneInchQuoteSource(),
   "li-fi": new CustomLiFiQuoteSource(),
-  "open-ocean": new CustomOpenOceanQuoteSource(),
-  neptune: new CustomNeptuneQuoteSource(),
-  odos: new CustomOdosQuoteSource(),
-  oogabooga: new CustomOogaboogaQuoteSource(),
-  uniswap: new CustomUniswapQuoteSource(),
-  magpie: new CustomMagpieQuoteSource(),
   kyberswap: new CustomKyberswapQuoteSource(),
   enso: new CustomEnsoQuoteSource(),
-  "okx-dex": new CustomOKXDexQuoteSource(),
-  paraswap: new CustomParaswapQuoteSource(),
-  "0x": new CustomZRXQuoteSource(),
-  spectra: new CustomSpectraQuoteSource(),
   gluex: new CustomGlueXQuoteSource(),
-  oku_bob_icecreamswap: new CustomOkuQuoteSource(
-    "icecreamswap",
-    "IceCreamSwap",
-    [60808],
-  ),
-  oku_bob_uniswap: new CustomOkuQuoteSource("usor", "Uniswap", [60808]),
 }
+
 export class CustomSourceList extends LocalSourceList {
   constructor({ providerService, fetchService }: ConstructorParameters) {
     super({ providerService, fetchService })
