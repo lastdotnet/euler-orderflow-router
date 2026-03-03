@@ -9,125 +9,6 @@ import {
   createClient,
   defineChain,
 } from "viem"
-import * as chains from "viem/chains"
-
-export const unichain = defineChain({
-  id: 130,
-  name: "Unichain",
-  nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
-  rpcUrls: {
-    default: {
-      http: ["https://mainnet.unichain.org/"],
-    },
-  },
-  blockExplorers: {
-    default: {
-      name: "Uniscan",
-      url: "https://uniscan.xyz",
-      apiUrl: "https://api.uniscan.xyz/api",
-    },
-  },
-  contracts: {
-    multicall3: {
-      address: "0xca11bde05977b3631167028862be2a173976ca11",
-      blockCreated: 0,
-    },
-  },
-})
-
-export const berachain = defineChain({
-  id: 80094,
-  name: "Berachain",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Bera",
-    symbol: "BERA",
-  },
-  blockExplorers: {
-    default: {
-      name: "berascan",
-      url: "https://berascan.com/",
-    },
-  },
-  rpcUrls: {
-    default: {
-      http: ["https://rpc.berachain.com"],
-    },
-  },
-})
-
-const sonicnetwork = defineChain({
-  id: 146,
-  name: "Sonic",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Sonic",
-    symbol: "S",
-  },
-  rpcUrls: {
-    default: {
-      http: ["https://rpc.soniclabs.com"],
-      webSocket: ["wss://sonic-rpc.publicnode.com"],
-    },
-  },
-  blockExplorers: {
-    default: { name: "Explorer", url: "https://sonicscan.org" },
-  },
-  contracts: {
-    multicall3: {
-      address: "0xcA11bde05977b3631167028862bE2a173976CA11",
-      blockCreated: 1,
-    },
-  },
-})
-
-export const tac = defineChain({
-  id: 239,
-  name: "TAC",
-  nativeCurrency: {
-    decimals: 18,
-    name: "TAC",
-    symbol: "TAC",
-  },
-  blockExplorers: {
-    default: {
-      name: "TAC Explorer",
-      url: "https://explorer.tac.build/",
-    },
-  },
-  rpcUrls: {
-    default: {
-      http: ["https://rpc.tac.xyz"],
-    },
-  },
-} as const)
-
-export const plasma = defineChain({
-  id: 9745,
-  name: "Plasma",
-  nativeCurrency: {
-    decimals: 18,
-    name: "XPL",
-    symbol: "XPL",
-  },
-  blockExplorers: {
-    default: {
-      name: "Plasma Explorer",
-      url: "https://plasmascan.to/",
-    },
-  },
-  rpcUrls: {
-    default: {
-      http: ["https://rpc.plasma.to"],
-    },
-  },
-  contracts: {
-    multicall3: {
-      address: "0xcA11bde05977b3631167028862bE2a173976CA11",
-      blockCreated: 0,
-    },
-  },
-} as const)
 
 export const hyperevm = defineChain({
   id: 999,
@@ -157,20 +38,6 @@ export const hyperevm = defineChain({
 } as const)
 
 export const RPC_URLS: Record<number, string> = {
-  [chains.mainnet.id]: process.env.RPC_URL_1 || "",
-  [chains.arbitrum.id]: process.env.RPC_URL_42161 || "",
-  [chains.base.id]: process.env.RPC_URL_8453 || "",
-  [berachain.id]: process.env.RPC_URL_80094 || "",
-  [chains.avalanche.id]: process.env.RPC_URL_43114 || "",
-  [chains.bsc.id]: process.env.RPC_URL_56 || "",
-  [chains.linea.id]: process.env.RPC_URL_56 || "",
-  [sonicnetwork.id]: process.env.RPC_URL_146 || "",
-  [unichain.id]: process.env.RPC_URL_130 || "",
-  [60808]: process.env.RPC_URL_130 || "", //bob
-  [1923]: process.env.RPC_URL_130 || "", //swell
-  [tac.id]: process.env.RPC_URL_239 || "",
-  [plasma.id]: process.env.RPC_URL_9745 || "",
-  [143]: process.env.RPC_URL_143 || "", // monad
   [hyperevm.id]: process.env.RPC_URL_999 || "",
 } as const
 
@@ -188,32 +55,6 @@ export function createChainConfig(chain: Chain) {
 }
 
 export const createClients = (): Record<number, Client<Transport, Chain>> => ({
-  [chains.mainnet.id]: createChainConfig(chains.mainnet),
-  [chains.arbitrum.id]: createChainConfig(chains.arbitrum),
-  [chains.base.id]: createChainConfig(chains.base),
-  [sonicnetwork.id]: createClient({
-    chain: sonicnetwork,
-    transport: http(RPC_URLS[sonicnetwork.id]),
-  }),
-  [berachain.id]: createChainConfig(berachain),
-  [chains.bsc.id]: createClient({
-    chain: chains.bsc,
-    transport: http(RPC_URLS[chains.bsc.id]),
-  }),
-  [chains.avalanche.id]: createClient({
-    chain: chains.avalanche,
-    transport: http(RPC_URLS[chains.avalanche.id]),
-  }),
-  [unichain.id]: createChainConfig(unichain),
-  [tac.id]: createClient({
-    chain: tac,
-    transport: http(RPC_URLS[tac.id]),
-  }),
-  [plasma.id]: createClient({
-    chain: plasma,
-    transport: http(RPC_URLS[plasma.id]),
-  }),
-  [chains.linea.id]: createChainConfig(chains.linea),
   [hyperevm.id]: createClient({
     chain: hyperevm,
     transport: http(RPC_URLS[hyperevm.id]),
