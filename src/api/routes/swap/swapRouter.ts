@@ -122,7 +122,6 @@ swapRouter.get(
 
       handleServiceResponse(ServiceResponse.success<SwapResponse>(swaps), res)
     } catch (error) {
-      console.log("error: ", error)
       return handleServiceResponse(createFailureResponse(req, error), res)
     } finally {
       log("===== SWAPS END =====")
