@@ -28,6 +28,7 @@ const ENSO_METADATA: QuoteSourceMetadata<EnsoSupport> = {
       Chains.ARBITRUM.chainId,
       Chains.AVALANCHE.chainId,
       Chains.SONIC.chainId,
+      80094, // berachain
       Chains.UNICHAIN.chainId,
       Chains.PLASMA.chainId,
       Chains.MONAD.chainId,
