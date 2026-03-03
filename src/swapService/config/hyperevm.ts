@@ -15,6 +15,17 @@ const hyperevmRoutingConfig: ChainRoutingConfig = [
     strategy: StrategyBalmySDK.name(),
     config: {
       sourcesFilter: {
+        includeSources: ["hyperscan"],
+      },
+    },
+    match: {
+      swapperModes: [SwapperMode.EXACT_IN],
+    },
+  },
+  {
+    strategy: StrategyBalmySDK.name(),
+    config: {
+      sourcesFilter: {
         includeSources: ["gluex"],
       },
     },
@@ -24,6 +35,17 @@ const hyperevmRoutingConfig: ChainRoutingConfig = [
   },
   // FALLBACKS
   // Binary search overswap for target debt
+  {
+    strategy: StrategyBalmySDK.name(),
+    config: {
+      sourcesFilter: {
+        includeSources: ["hyperscan"],
+      },
+    },
+    match: {
+      swapperModes: [SwapperMode.TARGET_DEBT],
+    },
+  },
   {
     strategy: StrategyBalmySDK.name(),
     config: {

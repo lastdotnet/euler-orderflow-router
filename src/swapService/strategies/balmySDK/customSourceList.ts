@@ -10,6 +10,7 @@ import type {
 import { LocalSourceList } from "@balmy/sdk/dist/services/quotes/source-lists/local-source-list"
 import { CustomZRXQuoteSource } from "./sources/0xMatchaQuoteSource"
 import { CustomEnsoQuoteSource } from "./sources/ensoQuoteSource"
+import { CustomHyperscanQuoteSource } from "./sources/hyperscanQuoteSource"
 import { CustomGlueXQuoteSource } from "./sources/gluexQuoteSource"
 import { CustomKyberswapQuoteSource } from "./sources/kyberswapQuoteSource"
 import { CustomLiFiQuoteSource } from "./sources/lifiQuoteSource"
@@ -49,6 +50,7 @@ const customSources = {
   "0x": new CustomZRXQuoteSource(),
   spectra: new CustomSpectraQuoteSource(),
   gluex: new CustomGlueXQuoteSource(),
+  hyperscan: new CustomHyperscanQuoteSource(),
   oku_bob_icecreamswap: new CustomOkuQuoteSource(
     "icecreamswap",
     "IceCreamSwap",

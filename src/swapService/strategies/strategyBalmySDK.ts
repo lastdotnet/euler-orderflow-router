@@ -163,6 +163,16 @@ export class StrategyBalmySDK {
                 process.env.GLUEX_UUID || process.env.NEXT_PUBLIC_GLUEX_UUID,
               ),
             },
+            hyperscan: {
+              baseUrl: String(
+                process.env.HYPERSCAN_BASE_URL ||
+                  process.env.NEXT_PUBLIC_HYPERSCAN_BASE_URL ||
+                  "http://64.34.94.231:3000",
+              ),
+              apiKey:
+                process.env.HYPERSCAN_API_KEY ||
+                process.env.NEXT_PUBLIC_HYPERSCAN_API_KEY,
+            },
             ...Object.fromEntries(
               allPendleAggregators.map((aggregator) => [
                 `pendle-${aggregator}`,
