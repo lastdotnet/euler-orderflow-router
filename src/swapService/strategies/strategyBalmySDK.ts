@@ -167,7 +167,7 @@ export class StrategyBalmySDK {
               baseUrl: String(
                 process.env.HYPERSCAN_BASE_URL ||
                   process.env.NEXT_PUBLIC_HYPERSCAN_BASE_URL ||
-                  "http://64.34.94.231:3000",
+                  "",
               ),
               apiKey:
                 process.env.HYPERSCAN_API_KEY ||

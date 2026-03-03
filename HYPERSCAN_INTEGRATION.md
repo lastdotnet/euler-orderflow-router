@@ -24,7 +24,7 @@ This documents the Hyperscan aggregator source wired into Euler Orderflow Router
 
 Default base URL if unset:
 
-- `http://64.34.94.231:3000`
+- (none)
 
 ## Endpoint Mapping
 
