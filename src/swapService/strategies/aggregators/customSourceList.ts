@@ -9,8 +9,6 @@ import type {
 } from "@balmy/sdk"
 import { LocalSourceList } from "@balmy/sdk/dist/services/quotes/source-lists/local-source-list"
 
-import { CustomEnsoQuoteSource } from "./sources/ensoQuoteSource"
-import { CustomGlueXQuoteSource } from "./sources/gluexQuoteSource"
 import { CustomKyberswapQuoteSource } from "./sources/kyberswapQuoteSource"
 import { CustomLiFiQuoteSource } from "./sources/lifiQuoteSource"
 import { CustomPendleQuoteSource } from "./sources/pendleQuoteSource"
@@ -25,8 +23,6 @@ type ConstructorParameters = {
 const customSources = {
   "li-fi": new CustomLiFiQuoteSource(),
   kyberswap: new CustomKyberswapQuoteSource(),
-  enso: new CustomEnsoQuoteSource(),
-  gluex: new CustomGlueXQuoteSource(),
 }
 
 export class CustomSourceList extends LocalSourceList {

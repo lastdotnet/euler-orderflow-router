@@ -143,44 +143,8 @@ export class StrategyAggregators {
             referrer: this.config.referrer,
           },
           custom: {
-            "1inch": {
-              apiKey: String(process.env.ONEINCH_API_KEY),
-            },
             "li-fi": {
               apiKey: String(process.env.LIFI_API_KEY),
-            },
-            "open-ocean": {
-              apiKey: String(process.env.OPENOCEAN_API_KEY),
-            },
-            "okx-dex": {
-              apiKey: String(process.env.OKX_API_KEY),
-              secretKey: String(process.env.OKX_SECRET_KEY),
-              passphrase: String(process.env.OKX_PASSPHRASE),
-            },
-            odos: {
-              apiKey: String(process.env.ODOS_API_KEY),
-              referralCode: Number(process.env.ODOS_REFERRAL_CODE),
-            },
-            oogabooga: {
-              apiKey: String(process.env.OOGABOOGA_API_KEY),
-            },
-            "0x": {
-              apiKey: String(process.env.OX_API_KEY),
-            },
-            magpie: {
-              apiKey: String(process.env.MAGPIE_API_KEY),
-            },
-            enso: {
-              apiKey: String(process.env.ENSO_API_KEY),
-            },
-            gluex: {
-              apiKey: String(
-                process.env.GLUEX_API_KEY ||
-                  process.env.NEXT_PUBLIC_GLUEX_API_KEY,
-              ),
-              integratorId: String(
-                process.env.GLUEX_UUID || process.env.NEXT_PUBLIC_GLUEX_UUID,
-              ),
             },
             ...Object.fromEntries(
               allPendleAggregators.map((aggregator) => [
