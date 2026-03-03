@@ -10,3 +10,4 @@ v=${b%%[)| ]*}
 export PATH="$NVM_DIR/versions/node/$v/bin:$PATH"
 
 pnpm run lint:fix
+git add -u

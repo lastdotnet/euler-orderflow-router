@@ -94,9 +94,9 @@ export class CustomLiFiQuoteSource extends AlwaysValidConfigAndContextSource<
       denyExchanges: "kyberswap,1inch",
       ...(config.referrer
         ? {
-          integrator: config.referrer.name,
-          referrer: config.referrer.address,
-        }
+            integrator: config.referrer.name,
+            referrer: config.referrer.address,
+          }
         : {}),
       ...(order.type === "sell"
         ? { fromAmount: order.sellAmount.toString() }

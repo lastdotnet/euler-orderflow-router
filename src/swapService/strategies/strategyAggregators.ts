@@ -53,13 +53,13 @@ const BINARY_SEARCH_EXCLUDE_SOURCES: any = [] // paraswap is rate limited and fa
 
 type SourcesFilter =
   | Either<
-    {
-      includeSources: SourceId[]
-    },
-    {
-      excludeSources: SourceId[]
-    }
-  >
+      {
+        includeSources: SourceId[]
+      },
+      {
+        excludeSources: SourceId[]
+      }
+    >
   | undefined
 
 export type BalmyStrategyConfig = {
@@ -112,8 +112,8 @@ export class StrategyAggregators {
         configClone.sourcesFilter = {
           includeSources: configClone.sourcesFilter?.includeSources
             ? configClone.sourcesFilter.includeSources.filter(
-              (s) => s === provider,
-            )
+                (s) => s === provider,
+              )
             : [provider],
         }
       }
@@ -176,7 +176,7 @@ export class StrategyAggregators {
             gluex: {
               apiKey: String(
                 process.env.GLUEX_API_KEY ||
-                process.env.NEXT_PUBLIC_GLUEX_API_KEY,
+                  process.env.NEXT_PUBLIC_GLUEX_API_KEY,
               ),
               integratorId: String(
                 process.env.GLUEX_UUID || process.env.NEXT_PUBLIC_GLUEX_UUID,
@@ -303,7 +303,10 @@ export class StrategyAggregators {
       quotes.map((q) => q.source.id),
     )
     return quotes.map((q) => {
-      const swapQuote = this.#getSwapQuoteFromSDKQuoteWithTx(swapParams, q as QuoteResponseWithTx)
+      const swapQuote = this.#getSwapQuoteFromSDKQuoteWithTx(
+        swapParams,
+        q as QuoteResponseWithTx,
+      )
       return buildApiResponseExactInputFromQuote(swapParams, swapQuote)
     })
   }
@@ -648,7 +651,7 @@ export class StrategyAggregators {
       !sources[sdkQuote.source.id].supports.swapAndTransfer
     const allowanceTarget =
       isAddress(sdkQuote.source.allowanceTarget) &&
-        !isAddressEqual(sdkQuote.source.allowanceTarget, sdkQuote.tx.to as Hex)
+      !isAddressEqual(sdkQuote.source.allowanceTarget, sdkQuote.tx.to as Hex)
         ? getAddress(sdkQuote.source.allowanceTarget)
         : undefined
 

@@ -1,4 +1,4 @@
-import { Chains } from "@balmy/sdk";
+import { Chains } from "@balmy/sdk"
 import type {
   BuildTxParams,
   IQuoteSource,
@@ -32,7 +32,8 @@ type GlueXConfig = {
 type GlueXData = { tx: SourceQuoteTransaction }
 
 export class CustomGlueXQuoteSource
-  implements IQuoteSource<GlueXSupport, GlueXConfig, GlueXData> {
+  implements IQuoteSource<GlueXSupport, GlueXConfig, GlueXData>
+{
   getMetadata() {
     return GLUEX_METADATA
   }
