@@ -19,7 +19,7 @@ const SUPPORTED_CHAINS: Record<ChainId, string> = {
   [Chains.ARBITRUM.chainId]: "arbitrum_one",
   [Chains.POLYGON.chainId]: "polygon",
   [Chains.AVALANCHE.chainId]: "avalanche",
-  [Chains.LINEA.chainId]: "avalanche",
+  [Chains.LINEA.chainId]: "linea",
   [Chains.GNOSIS.chainId]: "xdai",
   [232]: "lens",
 }
@@ -103,8 +103,8 @@ export class CustomCoWQuoteSource extends AlwaysValidConfigAndContextSource<
     } = await quoteResponse.json()
 
     const quote = {
-      sellAmount,
-      buyAmount,
+      sellAmount: BigInt(sellAmount),
+      buyAmount: BigInt(buyAmount),
       allowanceTarget: zeroAddress,
       estimatedGas: 0n,
       customData: {},

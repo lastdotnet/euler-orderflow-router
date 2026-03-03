@@ -56,31 +56,6 @@ export const berachain = defineChain({
   },
 })
 
-const sonicnetwork = defineChain({
-  id: 146,
-  name: "Sonic",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Sonic",
-    symbol: "S",
-  },
-  rpcUrls: {
-    default: {
-      http: ["https://rpc.soniclabs.com"],
-      webSocket: ["wss://sonic-rpc.publicnode.com"],
-    },
-  },
-  blockExplorers: {
-    default: { name: "Explorer", url: "https://sonicscan.org" },
-  },
-  contracts: {
-    multicall3: {
-      address: "0xcA11bde05977b3631167028862bE2a173976CA11",
-      blockCreated: 1,
-    },
-  },
-})
-
 export const tac = defineChain({
   id: 239,
   name: "TAC",
@@ -163,19 +138,15 @@ export const RPC_URLS: Record<number, string> = {
   [chains.berachain.id]: process.env.RPC_URL_80094 || "",
   [chains.avalanche.id]: process.env.RPC_URL_43114 || "",
   [chains.bsc.id]: process.env.RPC_URL_56 || "",
-  [chains.linea.id]: process.env.RPC_URL_56 || "",
-  [sonicnetwork.id]: process.env.RPC_URL_146 || "",
-  [unichain.id]: process.env.RPC_URL_130 || "",
-  [tac.id]: process.env.RPC_URL_239 || "",
-  [plasma.id]: process.env.RPC_URL_9745 || "",
-  [hyperevm.id]: process.env.RPC_URL_999 || "",
+  [chains.linea.id]: process.env.RPC_URL_59144 || "",
   [chains.sonic.id]: process.env.RPC_URL_146 || "",
   [chains.unichain.id]: process.env.RPC_URL_130 || "",
-  [chains.bob.id]: process.env.RPC_URL_130 || "",
-  [chains.swellchain.id]: process.env.RPC_URL_130 || "",
   [chains.tac.id]: process.env.RPC_URL_239 || "",
   [chains.plasma.id]: process.env.RPC_URL_9745 || "",
+  [chains.bob.id]: process.env.RPC_URL_60808 || "",
+  [chains.swellchain.id]: process.env.RPC_URL_1923 || "",
   [chains.monad.id]: process.env.RPC_URL_143 || "",
+  [hyperevm.id]: process.env.RPC_URL_999 || "",
 } as const
 
 export const createHttp = (chainId: number) =>
