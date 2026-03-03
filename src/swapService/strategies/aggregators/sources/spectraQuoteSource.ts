@@ -17,7 +17,7 @@ import {
 import { log } from "@uniswap/smart-order-router"
 import qs from "qs"
 import { type Address, getAddress, isAddressEqual } from "viem"
-import { arbitrum, avalanche, base, bsc, mainnet, optimism } from "viem/chains"
+import { arbitrum, avalanche, base, bsc, hemi, hyperEvm, katana, mainnet, optimism, sonic } from "viem/chains"
 
 const SUPPORTED_CHAINS: Record<string, string> = {
   [mainnet.id]: "mainnet",
@@ -26,10 +26,9 @@ const SUPPORTED_CHAINS: Record<string, string> = {
   [arbitrum.id]: "arbitrum",
   [avalanche.id]: "avalanche",
   [bsc.id]: "bsc",
-  [999]: "hyperevm",
-  [747474]: "katana",
-  [146]: "sonic",
-  [43111]: "hemi",
+  [katana.id]: "katana",
+  [sonic.id]: "sonic",
+  [hemi.id]: "hemi",
 }
 
 export const SPECTRA_METADATA: QuoteSourceMetadata<SpectraSupport> = {
@@ -55,8 +54,7 @@ type ExpiredPoolsCache = {
 const todayUTC = () => new Date().setUTCHours(0, 0, 0, 0)
 
 export class CustomSpectraQuoteSource
-  implements IQuoteSource<SpectraSupport, SpectraConfig, SpectraData>
-{
+  implements IQuoteSource<SpectraSupport, SpectraConfig, SpectraData> {
   private expiredPoolsCache: ExpiredPoolsCache = {}
 
   getMetadata() {

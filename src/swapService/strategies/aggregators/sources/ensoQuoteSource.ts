@@ -28,11 +28,10 @@ const ENSO_METADATA: QuoteSourceMetadata<EnsoSupport> = {
       Chains.ARBITRUM.chainId,
       Chains.AVALANCHE.chainId,
       Chains.SONIC.chainId,
-      80094,
-      130,
-      9745,
-      143, // monad
-      999, // hyperEvm
+      Chains.UNICHAIN.chainId,
+      Chains.PLASMA.chainId,
+      Chains.MONAD.chainId,
+      Chains.HYPER_EVM.chainId,
     ],
     swapAndTransfer: false,
     buyOrders: false,

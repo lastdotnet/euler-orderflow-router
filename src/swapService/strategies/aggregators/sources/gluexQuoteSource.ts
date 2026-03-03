@@ -1,3 +1,4 @@
+import { Chains } from "@balmy/sdk";
 import type {
   BuildTxParams,
   IQuoteSource,
@@ -16,9 +17,7 @@ import {
 const GLUEX_METADATA: QuoteSourceMetadata<GlueXSupport> = {
   name: "GlueX",
   supports: {
-    chains: [
-      999, // hyperevm
-    ],
+    chains: [],
     swapAndTransfer: true,
     buyOrders: false,
   },
@@ -33,8 +32,7 @@ type GlueXConfig = {
 type GlueXData = { tx: SourceQuoteTransaction }
 
 export class CustomGlueXQuoteSource
-  implements IQuoteSource<GlueXSupport, GlueXConfig, GlueXData>
-{
+  implements IQuoteSource<GlueXSupport, GlueXConfig, GlueXData> {
   getMetadata() {
     return GLUEX_METADATA
   }
