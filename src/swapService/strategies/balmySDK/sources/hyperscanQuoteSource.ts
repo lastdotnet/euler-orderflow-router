@@ -138,7 +138,10 @@ export class CustomHyperscanQuoteSource
 
   async buildTx({
     request,
-  }: BuildTxParams<HyperscanConfig, HyperscanData>): Promise<SourceQuoteTransaction> {
+  }: BuildTxParams<
+    HyperscanConfig,
+    HyperscanData
+  >): Promise<SourceQuoteTransaction> {
     return request.customData.tx
   }
 
