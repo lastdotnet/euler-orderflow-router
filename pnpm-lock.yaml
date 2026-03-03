@@ -84,6 +84,9 @@ devDependencies:
   '@types/express':
     specifier: ^5.0.0
     version: 5.0.0
+  '@types/qs':
+    specifier: ^6.14.0
+    version: 6.14.0
   '@types/supertest':
     specifier: ^6.0.2
     version: 6.0.2
@@ -1827,7 +1830,7 @@ packages:
     resolution: {integrity: sha512-N4LZ2xG7DatVqhCZzOGb1Yi5lMbXSZcmdLDe9EzSndPV2HpWYWzRbaerl2n27irrm94EPpprqa8KpskPT085+A==}
     dependencies:
       '@types/node': 22.10.1
-      '@types/qs': 6.9.17
+      '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
     dev: false
@@ -1836,7 +1839,7 @@ packages:
     resolution: {integrity: sha512-vluaspfvWEtE4vcSDlKRNer52DvOGrB2xv6diXy6UKyKW0lqZiWHGNApSyxOv+8DE5Z27IzVvE7hNkxg7EXIcg==}
     dependencies:
       '@types/node': 22.10.1
-      '@types/qs': 6.9.17
+      '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
     dev: true
@@ -1846,7 +1849,7 @@ packages:
     dependencies:
       '@types/body-parser': 1.19.5
       '@types/express-serve-static-core': 4.19.6
-      '@types/qs': 6.9.17
+      '@types/qs': 6.14.0
       '@types/serve-static': 1.15.7
     dev: false
 
@@ -1855,7 +1858,7 @@ packages:
     dependencies:
       '@types/body-parser': 1.19.5
       '@types/express-serve-static-core': 5.0.2
-      '@types/qs': 6.9.17
+      '@types/qs': 6.14.0
       '@types/serve-static': 1.15.7
     dev: true
 
@@ -1874,8 +1877,8 @@ packages:
     dependencies:
       undici-types: 6.20.0
 
-  /@types/qs@6.9.17:
-    resolution: {integrity: sha512-rX4/bPcfmvxHDv0XjfJELTTr+iB+tn032nPILqHm5wbthUUUuVtNGGqzhya9XUxjTP8Fpr0qYgSZZKxGY++svQ==}
+  /@types/qs@6.14.0:
+    resolution: {integrity: sha512-eOunJqu0K1923aExK6y8p6fsihYEn/BYuQ4g0CxAAgFc4b/ZLN4CrsRZ55srTdqoiLzU2B2evC+apEIxprEzkQ==}
 
   /@types/range-parser@1.2.7:
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
