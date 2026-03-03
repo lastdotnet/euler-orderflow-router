@@ -1,5 +1,5 @@
 import { type ChainRoutingConfig, SwapperMode } from "../interface"
-import { StrategyBalmySDK, StrategyRepayWrapper } from "../strategies"
+import { StrategyAggregators, StrategyRepayWrapper } from "../strategies"
 
 const bscRoutingConfig: ChainRoutingConfig = [
   // WRAPPERS
@@ -10,28 +10,15 @@ const bscRoutingConfig: ChainRoutingConfig = [
       swapperModes: [SwapperMode.EXACT_IN],
     },
   },
+  // {
+  //   strategy: StrategyERC4626Wrapper.name(),
+  //   match: {
+  //     tokensInOrOut: [YNBNBX_BSC],
+  //   },
+  // },
   // DEFAULTS
   {
-    strategy: StrategyBalmySDK.name(),
-    config: {
-      sourcesFilter: {
-        includeSources: [
-          "kyberswap",
-          "paraswap",
-          "odos",
-          "1inch",
-          "li-fi",
-          "open-ocean",
-          "uniswap",
-          "oku",
-          "magpie",
-          "enso",
-          "pendle",
-          "okx-dex",
-        ],
-      },
-    },
-    match: {},
+    strategy: StrategyAggregators.name(),
   },
 ]
 

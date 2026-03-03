@@ -1,5 +1,5 @@
 import { type ChainRoutingConfig, SwapperMode } from "../interface"
-import { StrategyBalmySDK, StrategyRepayWrapper } from "../strategies"
+import { StrategyAggregators, StrategyRepayWrapper } from "../strategies"
 
 const hyperevmRoutingConfig: ChainRoutingConfig = [
   // WRAPPERS
@@ -10,32 +10,9 @@ const hyperevmRoutingConfig: ChainRoutingConfig = [
       swapperModes: [SwapperMode.EXACT_IN],
     },
   },
-  // DEFAULTS - Prioritize reliable DEXes first (Enso, Kyberswap)
+  // DEFAULTS
   {
-    strategy: StrategyBalmySDK.name(),
-    config: {
-      sourcesFilter: {
-        includeSources: ["enso", "kyberswap", "gluex"],
-      },
-      timeout: "60000",
-    },
-    match: {
-      swapperModes: [SwapperMode.EXACT_IN],
-    },
-  },
-  // FALLBACKS
-  // Binary search overswap for target debt
-  {
-    strategy: StrategyBalmySDK.name(),
-    config: {
-      sourcesFilter: {
-        includeSources: ["enso", "kyberswap", "gluex"],
-      },
-      timeout: "60000",
-    },
-    match: {
-      swapperModes: [SwapperMode.TARGET_DEBT],
-    },
+    strategy: StrategyAggregators.name(),
   },
 ]
 

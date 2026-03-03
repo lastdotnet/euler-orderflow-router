@@ -20,6 +20,7 @@ import {
   calculateAllowanceTarget,
   failed,
 } from "@balmy/sdk/dist/services/quotes/quote-sources/utils"
+import * as chains from "viem/chains"
 
 const SUPPORTED_CHAINS: Record<ChainId, string> = {
   [Chains.ARBITRUM.chainId]: "arbitrum",
@@ -42,11 +43,11 @@ const SUPPORTED_CHAINS: Record<ChainId, string> = {
   [Chains.MANTLE.chainId]: "mantle",
   [Chains.SONIC.chainId]: "sonic",
   [Chains.ZK_SYNC_ERA.chainId]: "zksync",
-  [130]: "unichain",
-  [59144]: "linea",
-  [9745]: "plasma",
-  [143]: "monad",
-  [999]: "hyperevm",
+  [Chains.UNICHAIN.chainId]: "unichain",
+  [Chains.LINEA.chainId]: "linea",
+  [Chains.PLASMA.chainId]: "plasma",
+  [Chains.MONAD.chainId]: "monad",
+  [Chains.HYPER_EVM.chainId]: "hyperevm",
 }
 
 const KYBERSWAP_METADATA: QuoteSourceMetadata<KyberswapSupport> = {
@@ -92,10 +93,10 @@ export class CustomKyberswapQuoteSource extends AlwaysValidConfigAndContextSourc
   > {
     const chainKey = SUPPORTED_CHAINS[chainId]
     const headers = config.referrer?.name
-      ? { "x-client-id": config.referrer?.name }
+      ? { "x-client-id": "llamaswap" } //TODO FIX //config.referrer?.name }
       : undefined
 
-    const url = `https://aggregator-api.kyberswap.com/${chainKey}/api/v1/routes?tokenIn=${sellToken}&tokenOut=${buyToken}&amountIn=${order.sellAmount.toString()}&saveGas=0&gasInclude=true&excludedSources=clipper,hashflow-v3,kyberswap-limit-order,kyberswap-limit-order-v2,mx-trading,native-v1,native-v2`
+    const url = `https://aggregator-api.kyberswap.com/${chainKey}/api/v1/routes?tokenIn=${sellToken}&tokenOut=${buyToken}&amountIn=${order.sellAmount.toString()}&saveGas=0&gasInclude=true&excludedSources=clipper,hashflow-v3,kyberswap-limit-order,kyberswap-limit-order-v2,mx-trading,native-v1,native-v2&excludeRFQSources=true`
     const routeResponse = await fetchService.fetch(url, { timeout, headers })
 
     if (!routeResponse.ok) {
@@ -115,7 +116,7 @@ export class CustomKyberswapQuoteSource extends AlwaysValidConfigAndContextSourc
     const quote = {
       sellAmount: order.sellAmount,
       buyAmount: BigInt(routeSummary.amountOut),
-      // estimatedGas: BigInt(routeSummary.gas),
+      estimatedGas: BigInt(routeSummary.gas),
       allowanceTarget: calculateAllowanceTarget(sellToken, routerAddress),
       customData: {
         routeSummary,

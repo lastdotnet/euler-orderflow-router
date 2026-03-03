@@ -160,18 +160,22 @@ export const RPC_URLS: Record<number, string> = {
   [chains.mainnet.id]: process.env.RPC_URL_1 || "",
   [chains.arbitrum.id]: process.env.RPC_URL_42161 || "",
   [chains.base.id]: process.env.RPC_URL_8453 || "",
-  [berachain.id]: process.env.RPC_URL_80094 || "",
+  [chains.berachain.id]: process.env.RPC_URL_80094 || "",
   [chains.avalanche.id]: process.env.RPC_URL_43114 || "",
   [chains.bsc.id]: process.env.RPC_URL_56 || "",
   [chains.linea.id]: process.env.RPC_URL_56 || "",
   [sonicnetwork.id]: process.env.RPC_URL_146 || "",
   [unichain.id]: process.env.RPC_URL_130 || "",
-  [60808]: process.env.RPC_URL_130 || "", //bob
-  [1923]: process.env.RPC_URL_130 || "", //swell
   [tac.id]: process.env.RPC_URL_239 || "",
   [plasma.id]: process.env.RPC_URL_9745 || "",
-  [143]: process.env.RPC_URL_143 || "", // monad
   [hyperevm.id]: process.env.RPC_URL_999 || "",
+  [chains.sonic.id]: process.env.RPC_URL_146 || "",
+  [chains.unichain.id]: process.env.RPC_URL_130 || "",
+  [chains.bob.id]: process.env.RPC_URL_130 || "",
+  [chains.swellchain.id]: process.env.RPC_URL_130 || "",
+  [chains.tac.id]: process.env.RPC_URL_239 || "",
+  [chains.plasma.id]: process.env.RPC_URL_9745 || "",
+  [chains.monad.id]: process.env.RPC_URL_143 || "",
 } as const
 
 export const createHttp = (chainId: number) =>
@@ -191,28 +195,13 @@ export const createClients = (): Record<number, Client<Transport, Chain>> => ({
   [chains.mainnet.id]: createChainConfig(chains.mainnet),
   [chains.arbitrum.id]: createChainConfig(chains.arbitrum),
   [chains.base.id]: createChainConfig(chains.base),
-  [sonicnetwork.id]: createClient({
-    chain: sonicnetwork,
-    transport: http(RPC_URLS[sonicnetwork.id]),
-  }),
-  [berachain.id]: createChainConfig(berachain),
-  [chains.bsc.id]: createClient({
-    chain: chains.bsc,
-    transport: http(RPC_URLS[chains.bsc.id]),
-  }),
-  [chains.avalanche.id]: createClient({
-    chain: chains.avalanche,
-    transport: http(RPC_URLS[chains.avalanche.id]),
-  }),
-  [unichain.id]: createChainConfig(unichain),
-  [tac.id]: createClient({
-    chain: tac,
-    transport: http(RPC_URLS[tac.id]),
-  }),
-  [plasma.id]: createClient({
-    chain: plasma,
-    transport: http(RPC_URLS[plasma.id]),
-  }),
+  [chains.sonic.id]: createChainConfig(chains.sonic),
+  [chains.berachain.id]: createChainConfig(chains.berachain),
+  [chains.bsc.id]: createChainConfig(chains.bsc),
+  [chains.avalanche.id]: createChainConfig(chains.avalanche),
+  [chains.unichain.id]: createChainConfig(chains.unichain),
+  [chains.tac.id]: createChainConfig(chains.tac),
+  [chains.plasma.id]: createChainConfig(chains.plasma),
   [chains.linea.id]: createChainConfig(chains.linea),
   [hyperevm.id]: createClient({
     chain: hyperevm,

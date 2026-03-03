@@ -3,7 +3,7 @@ const path = require("node:path")
 
 const PENDLE_CONFIG_PATH = path.join(
   __dirname,
-  "../src/swapService/strategies/balmySDK/sources/pendle/pendleAggregators.json",
+  "../src/swapService/strategies/aggregators/sources/pendle/pendleAggregators.json",
 )
 
 async function run() {
@@ -15,6 +15,8 @@ async function run() {
     return
   }
   const { chainIds } = await response.json()
+  // TODO REMOVE
+  if (!chainIds.includes(130)) chainIds.push(130)
   try {
     const aggregators = await Promise.all(
       chainIds.map(async (chainId) => {

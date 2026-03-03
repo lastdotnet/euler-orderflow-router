@@ -1,4 +1,3 @@
-import { hyperEvm } from "@/swapService/config"
 import { Chains } from "@balmy/sdk"
 import type {
   BuildTxParams,
@@ -47,8 +46,7 @@ type EnsoConfig = {
 }
 type EnsoData = { tx: SourceQuoteTransaction }
 export class CustomEnsoQuoteSource
-  implements IQuoteSource<EnsoSupport, EnsoConfig, EnsoData>
-{
+  implements IQuoteSource<EnsoSupport, EnsoConfig, EnsoData> {
   getMetadata() {
     return ENSO_METADATA
   }
@@ -104,7 +102,7 @@ export class CustomEnsoQuoteSource
 
     const {
       amountOut,
-      // gas,
+      gas,
       tx: { data, to, value },
     } = await response.json()
 
@@ -112,7 +110,7 @@ export class CustomEnsoQuoteSource
       sellAmount: order.sellAmount,
       buyAmount: BigInt(amountOut),
       allowanceTarget: calculateAllowanceTarget(sellToken, to),
-      // estimatedGas: BigInt(gas),
+      estimatedGas: BigInt(gas),
       customData: {
         tx: {
           calldata: data,

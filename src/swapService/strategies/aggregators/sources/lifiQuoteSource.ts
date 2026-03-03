@@ -47,9 +47,8 @@ const LI_FI_METADATA: QuoteSourceMetadata<LiFiSupport> = {
       Chains.SCROLL.chainId,
       Chains.BLAST.chainId,
       Chains.MANTLE.chainId,
-      80094, // berachain
-      130, // unichain
-      999, // hyperevm
+      Chains.UNICHAIN.chainId,
+      Chains.HYPER_EVM.chainId,
     ],
     swapAndTransfer: true,
     buyOrders: true,
@@ -95,9 +94,9 @@ export class CustomLiFiQuoteSource extends AlwaysValidConfigAndContextSource<
       denyExchanges: "kyberswap,1inch",
       ...(config.referrer
         ? {
-            integrator: config.referrer.name,
-            referrer: config.referrer.address,
-          }
+          integrator: config.referrer.name,
+          referrer: config.referrer.address,
+        }
         : {}),
       ...(order.type === "sell"
         ? { fromAmount: order.sellAmount.toString() }
@@ -131,15 +130,15 @@ export class CustomLiFiQuoteSource extends AlwaysValidConfigAndContextSource<
         toAmountMin,
         toAmount,
         fromAmount,
-        // gasCosts,
+        gasCosts,
       },
       transactionRequest: { to, data, value },
     } = await response.json()
 
-    // const estimatedGas = (gasCosts as { estimate: bigint }[]).reduce(
-    //   (accum, { estimate }) => accum + BigInt(estimate),
-    //   0n,
-    // )
+    const estimatedGas = (gasCosts as { estimate: bigint }[]).reduce(
+      (accum, { estimate }) => accum + BigInt(estimate),
+      0n,
+    )
 
     return {
       sellAmount: fromAmount,
@@ -147,7 +146,7 @@ export class CustomLiFiQuoteSource extends AlwaysValidConfigAndContextSource<
       buyAmount: BigInt(toAmount),
       minBuyAmount: BigInt(toAmountMin),
       type: order.type,
-      // estimatedGas, // TODO fix handling in SDK for unkown chains
+      estimatedGas,
       allowanceTarget: calculateAllowanceTarget(sellToken, approvalAddress),
       customData: {
         tx: {

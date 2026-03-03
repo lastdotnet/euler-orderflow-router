@@ -19,6 +19,7 @@ import type {
 } from "@balmy/sdk/dist/services/quotes/quote-sources/types"
 import { failed } from "@balmy/sdk/dist/services/quotes/quote-sources/utils"
 import qs from "qs"
+import * as chains from "viem/chains"
 
 // https://www.okx.com/web3/build/docs/waas/okx-waas-supported-networks
 const SUPPORTED_CHAINS = [
@@ -41,11 +42,11 @@ const SUPPORTED_CHAINS = [
   Chains.ZK_SYNC_ERA,
   Chains.SONIC,
   {
-    chainId: 130,
+    chainId: chains.unichain.id,
     name: "Unichain",
   },
   {
-    chainId: 9745,
+    chainId: chains.plasma.id,
     name: "Plasma",
   },
 ]
@@ -143,7 +144,7 @@ async function calculateApprovalTarget({
     return { data: [{ dexContractAddress: Addresses.ZERO_ADDRESS }] }
   }
   const queryParams = {
-    chainId,
+    chainIndex: chainId,
     tokenContractAddress: sellToken,
     approveAmount: Uint.MAX_256,
   }
@@ -151,7 +152,7 @@ async function calculateApprovalTarget({
     skipNulls: true,
     arrayFormat: "comma",
   })
-  const path = `/api/v5/dex/aggregator/approve-transaction?${queryString}`
+  const path = `/api/v6/dex/aggregator/approve-transaction?${queryString}`
   return fetch({
     sellToken,
     buyToken,
@@ -180,7 +181,7 @@ async function calculateQuote({
     amount: order.sellAmount.toString(),
     fromTokenAddress: sellToken,
     toTokenAddress: buyToken,
-    slippage: slippagePercentage / 100,
+    slippagePercent: slippagePercentage,
     userWalletAddress: takeFrom,
     swapReceiverAddress: recipient,
   }
@@ -188,7 +189,7 @@ async function calculateQuote({
     skipNulls: true,
     arrayFormat: "comma",
   })
-  const path = `/api/v5/dex/aggregator/swap?${queryString}`
+  const path = `/api/v6/dex/aggregator/swap?${queryString}`
   return fetch({
     sellToken,
     buyToken,
