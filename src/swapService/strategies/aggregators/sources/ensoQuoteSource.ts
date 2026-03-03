@@ -32,7 +32,6 @@ const ENSO_METADATA: QuoteSourceMetadata<EnsoSupport> = {
       Chains.UNICHAIN.chainId,
       Chains.PLASMA.chainId,
       Chains.MONAD.chainId,
-      Chains.HYPER_EVM.chainId,
     ],
     swapAndTransfer: false,
     buyOrders: false,
