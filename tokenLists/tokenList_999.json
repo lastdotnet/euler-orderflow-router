@@ -251,5 +251,45 @@
     "symbol": "hyPT-kHYPE-19MAR2026",
     "decimals": 18,
     "logoURI": "https://token-images.euler.finance/999/0xea84ca9849D9e76a78B91F221F84e9Ca065FC9f5"
+  },
+  {
+    "chainId": 999,
+    "address": "0x4bB19336C973506B9405Db586b7AEE302a7CbCFc",
+    "name": "Blueberry HLP",
+    "symbol": "bbHLP",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/999/0x4bB19336C973506B9405Db586b7AEE302a7CbCFc"
+  },
+  {
+    "chainId": 999,
+    "address": "0xFde5B0626fC80E36885e2fA9cD5ad9d7768D725c",
+    "name": "haHYPE",
+    "symbol": "haHYPE",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/999/0xFde5B0626fC80E36885e2fA9cD5ad9d7768D725c"
+  },
+  {
+    "chainId": 999,
+    "address": "0x9b498C3c8A0b8CD8BA1D9851d40D186F1872b44E",
+    "name": "Purr",
+    "symbol": "PURR",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/999/0x9b498C3c8A0b8CD8BA1D9851d40D186F1872b44E"
+  },
+  {
+    "chainId": 999,
+    "address": "0x3B4575E689DEd21CAAD31d64C4df1f10F3B2CedF",
+    "name": "Unit Fartcoin",
+    "symbol": "UFART",
+    "decimals": 6,
+    "logoURI": "https://token-images.euler.finance/999/0x3B4575E689DEd21CAAD31d64C4df1f10F3B2CedF"
+  },
+  {
+    "chainId": 999,
+    "address": "0x27eC642013bcB3D80CA3706599D3cdA04F6f4452",
+    "name": "Unit Pump",
+    "symbol": "UPUMP",
+    "decimals": 6,
+    "logoURI": "https://token-images.euler.finance/999/0x27eC642013bcB3D80CA3706599D3cdA04F6f4452"
   }
 ]
