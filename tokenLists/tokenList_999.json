@@ -102,6 +102,14 @@
   },
   {
     "chainId": 999,
+    "address": "0xFde5B0626fC80E36885e2fA9cD5ad9d7768D725c",
+    "name": "harmonix finance haHYPE",
+    "symbol": "haHYPE",
+    "decimals": 18,
+    "logoURI": "https://token-images.euler.finance/999/0xfde5b0626fc80e36885e2fa9cd5ad9d7768d725c"
+  },
+  {
+    "chainId": 999,
     "address": "0xBe6727B535545C67d5cAa73dEa54865B92CF7907",
     "name": "Unit Ethereum",
     "symbol": "UETH",
