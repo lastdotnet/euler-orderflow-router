@@ -21,7 +21,7 @@
     "name": "Kinetiq Staked HYPE",
     "symbol": "kHYPE",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0xfD739d4e423301CE9385c1fb8850539D657C296D"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xfD739d4e423301CE9385c1fb8850539D657C296D"
   },
   {
     "chainId": 999,
@@ -29,7 +29,7 @@
     "name": "Wrapped HYPE",
     "symbol": "WHYPE",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0x5555555555555555555555555555555555555555"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x5555555555555555555555555555555555555555"
   },
   {
     "chainId": 999,
@@ -37,7 +37,7 @@
     "name": "USDC",
     "symbol": "USDC",
     "decimals": 6,
-    "logoURI": "https://token-images.euler.finance/999/0xb88339CB7199b77E23DB6E890353E22632Ba630f"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xb88339CB7199b77E23DB6E890353E22632Ba630f"
   },
   {
     "chainId": 999,
@@ -45,7 +45,7 @@
     "name": "USDH",
     "symbol": "USDH",
     "decimals": 6,
-    "logoURI": "https://token-images.euler.finance/999/0x111111a1a0667d36bD57c0A9f569b98057111111"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x111111a1a0667d36bD57c0A9f569b98057111111"
   },
   {
     "chainId": 999,
@@ -53,7 +53,7 @@
     "name": "Unit Bitcoin",
     "symbol": "UBTC",
     "decimals": 8,
-    "logoURI": "https://token-images.euler.finance/999/0x9FDBdA0A5e284c32744D2f17Ee5c74B284993463"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x9FDBdA0A5e284c32744D2f17Ee5c74B284993463"
   },
   {
     "chainId": 999,
@@ -61,7 +61,7 @@
     "name": "USD₮0",
     "symbol": "USD₮0",
     "decimals": 6,
-    "logoURI": "https://token-images.euler.finance/999/0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb"
   },
   {
     "chainId": 999,
@@ -69,7 +69,7 @@
     "name": "PT Kinetiq Staked HYPE 19MAR2026",
     "symbol": "PT-kHYPE-19MAR2026",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0xea84ca9849D9e76a78B91F221F84e9Ca065FC9f5",
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xea84ca9849D9e76a78B91F221F84e9Ca065FC9f5",
     "metadata": {
       "provider": "PENDLE",
       "isPendlePT": true,
@@ -82,7 +82,7 @@
     "name": "Staked HYPE Shares",
     "symbol": "wstHYPE",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0x94e8396e0869c9F2200760aF0621aFd240E1CF38"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x94e8396e0869c9F2200760aF0621aFd240E1CF38"
   },
   {
     "chainId": 999,
@@ -90,7 +90,7 @@
     "name": "Hyperbeat LST Vault",
     "symbol": "lstHYPE",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0x81e064d0eB539de7c3170EDF38C1A42CBd752A76"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x81e064d0eB539de7c3170EDF38C1A42CBd752A76"
   },
   {
     "chainId": 999,
@@ -98,7 +98,7 @@
     "name": "hyperbeat x ether.fi HYPE",
     "symbol": "beHYPE",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0xd8FC8F0b03eBA61F64D08B0bef69d80916E5DdA9"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xd8FC8F0b03eBA61F64D08B0bef69d80916E5DdA9"
   },
   {
     "chainId": 999,
@@ -106,7 +106,7 @@
     "name": "Unit Ethereum",
     "symbol": "UETH",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0xBe6727B535545C67d5cAa73dEa54865B92CF7907"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xBe6727B535545C67d5cAa73dEa54865B92CF7907"
   },
   {
     "chainId": 999,
@@ -114,7 +114,7 @@
     "name": "HypurrFi Wrapped HYPE",
     "symbol": "hyWHYPE",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0x5555555555555555555555555555555555555555"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x5555555555555555555555555555555555555555"
   },
   {
     "chainId": 999,
@@ -122,7 +122,7 @@
     "name": "HypurrFi Staked HYPE Shares",
     "symbol": "hywstHYPE",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0x94e8396e0869c9F2200760aF0621aFd240E1CF38"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x94e8396e0869c9F2200760aF0621aFd240E1CF38"
   },
   {
     "chainId": 999,
@@ -130,7 +130,7 @@
     "name": "HypurrFi Unit Bitcoin",
     "symbol": "hyUBTC",
     "decimals": 8,
-    "logoURI": "https://token-images.euler.finance/999/0x9FDBdA0A5e284c32744D2f17Ee5c74B284993463"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x9FDBdA0A5e284c32744D2f17Ee5c74B284993463"
   },
   {
     "chainId": 999,
@@ -138,7 +138,7 @@
     "name": "HypurrFi Unit Ethereum",
     "symbol": "hyUETH",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0xBe6727B535545C67d5cAa73dEa54865B92CF7907"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xBe6727B535545C67d5cAa73dEa54865B92CF7907"
   },
   {
     "chainId": 999,
@@ -146,7 +146,7 @@
     "name": "HypurrFi USDeOFT",
     "symbol": "hyUSDe",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34"
   },
   {
     "chainId": 999,
@@ -154,7 +154,7 @@
     "name": "HypurrFi feUSD",
     "symbol": "hyfeUSD",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0x02c6a2fA58cC01A18B8D9E00eA48d65E4dF26c70"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x02c6a2fA58cC01A18B8D9E00eA48d65E4dF26c70"
   },
   {
     "chainId": 999,
@@ -162,7 +162,7 @@
     "name": "HypurrFi USD₮0",
     "symbol": "hyUSD₮0",
     "decimals": 6,
-    "logoURI": "https://token-images.euler.finance/999/0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb"
   },
   {
     "chainId": 999,
@@ -170,7 +170,7 @@
     "name": "HypurrFi Hyper USD",
     "symbol": "hyUSDHL",
     "decimals": 6,
-    "logoURI": "https://token-images.euler.finance/999/0xb50A96253aBDF803D85efcDce07Ad8becBc52BD5"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xb50A96253aBDF803D85efcDce07Ad8becBc52BD5"
   },
   {
     "chainId": 999,
@@ -178,7 +178,7 @@
     "name": "HypurrFi Unit Solana",
     "symbol": "hyUSOL",
     "decimals": 9,
-    "logoURI": "https://token-images.euler.finance/999/0x068f321Fa8Fb9f0D135f290Ef6a3e2813e1c8A29"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x068f321Fa8Fb9f0D135f290Ef6a3e2813e1c8A29"
   },
   {
     "chainId": 999,
@@ -186,7 +186,7 @@
     "name": "HypurrFi Kinetiq Staked HYPE",
     "symbol": "hykHYPE",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0xfD739d4e423301CE9385c1fb8850539D657C296D"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xfD739d4e423301CE9385c1fb8850539D657C296D"
   },
   {
     "chainId": 999,
@@ -194,7 +194,7 @@
     "name": "HypurrFi XAUt0",
     "symbol": "hyXAUt0",
     "decimals": 6,
-    "logoURI": "https://token-images.euler.finance/999/0xf4D9235269a96aaDaFc9aDAe454a0618eBE37949"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xf4D9235269a96aaDaFc9aDAe454a0618eBE37949"
   },
   {
     "chainId": 999,
@@ -202,7 +202,7 @@
     "name": "HypurrFi thBILL",
     "symbol": "hythBILL",
     "decimals": 6,
-    "logoURI": "https://token-images.euler.finance/999/0xfDD22Ce6D1F66bc0Ec89b20BF16CcB6670F55A5a"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xfDD22Ce6D1F66bc0Ec89b20BF16CcB6670F55A5a"
   },
   {
     "chainId": 999,
@@ -210,7 +210,7 @@
     "name": "HypurrFi Staked USDe",
     "symbol": "hysUSDe",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0x211Cc4DD073734dA055fbF44a2b4667d5E5fE5d2"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x211Cc4DD073734dA055fbF44a2b4667d5E5fE5d2"
   },
   {
     "chainId": 999,
@@ -218,7 +218,7 @@
     "name": "HypurrFi PT Kinetiq Staked HYPE 13NOV2025",
     "symbol": "hyPT-kHYPE-13NOV2025",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0x311dB0FDe558689550c68355783c95eFDfe25329"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x311dB0FDe558689550c68355783c95eFDfe25329"
   },
   {
     "chainId": 999,
@@ -226,7 +226,7 @@
     "name": "HypurrFi hyperbeat x ether.fi HYPE",
     "symbol": "hybeHYPE",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0xd8FC8F0b03eBA61F64D08B0bef69d80916E5DdA9"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xd8FC8F0b03eBA61F64D08B0bef69d80916E5DdA9"
   },
   {
     "chainId": 999,
@@ -234,7 +234,7 @@
     "name": "HypurrFi USDC",
     "symbol": "hyUSDC",
     "decimals": 6,
-    "logoURI": "https://token-images.euler.finance/999/0xb88339CB7199b77E23DB6E890353E22632Ba630f"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xb88339CB7199b77E23DB6E890353E22632Ba630f"
   },
   {
     "chainId": 999,
@@ -242,7 +242,7 @@
     "name": "HypurrFi USDH",
     "symbol": "hyUSDH",
     "decimals": 6,
-    "logoURI": "https://token-images.euler.finance/999/0x111111a1a0667d36bD57c0A9f569b98057111111"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x111111a1a0667d36bD57c0A9f569b98057111111"
   },
   {
     "chainId": 999,
@@ -250,7 +250,7 @@
     "name": "HypurrFi PT Kinetiq Staked HYPE 19MAR2026",
     "symbol": "hyPT-kHYPE-19MAR2026",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0xea84ca9849D9e76a78B91F221F84e9Ca065FC9f5"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xea84ca9849D9e76a78B91F221F84e9Ca065FC9f5"
   },
   {
     "chainId": 999,
@@ -258,7 +258,7 @@
     "name": "Blueberry HLP",
     "symbol": "bbHLP",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0x4bB19336C973506B9405Db586b7AEE302a7CbCFc"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x4bB19336C973506B9405Db586b7AEE302a7CbCFc"
   },
   {
     "chainId": 999,
@@ -266,7 +266,7 @@
     "name": "haHYPE",
     "symbol": "haHYPE",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0xFde5B0626fC80E36885e2fA9cD5ad9d7768D725c"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0xFde5B0626fC80E36885e2fA9cD5ad9d7768D725c"
   },
   {
     "chainId": 999,
@@ -274,7 +274,7 @@
     "name": "Purr",
     "symbol": "PURR",
     "decimals": 18,
-    "logoURI": "https://token-images.euler.finance/999/0x9b498C3c8A0b8CD8BA1D9851d40D186F1872b44E"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x9b498C3c8A0b8CD8BA1D9851d40D186F1872b44E"
   },
   {
     "chainId": 999,
@@ -282,7 +282,7 @@
     "name": "Unit Fartcoin",
     "symbol": "UFART",
     "decimals": 6,
-    "logoURI": "https://token-images.euler.finance/999/0x3B4575E689DEd21CAAD31d64C4df1f10F3B2CedF"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x3B4575E689DEd21CAAD31d64C4df1f10F3B2CedF"
   },
   {
     "chainId": 999,
@@ -290,6 +290,6 @@
     "name": "Unit Pump",
     "symbol": "UPUMP",
     "decimals": 6,
-    "logoURI": "https://token-images.euler.finance/999/0x27eC642013bcB3D80CA3706599D3cdA04F6f4452"
+    "logoURI": "https://mewler-token-images-production.up.railway.app/999/0x27eC642013bcB3D80CA3706599D3cdA04F6f4452"
   }
 ]
